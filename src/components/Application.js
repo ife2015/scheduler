@@ -28,7 +28,7 @@ const appointments = [
       student: "Ife Olaifa",
       interviewer: {
         id: 1,
-        name: "Ife Olaifa",
+        name: "Tori Malcolm",
         avatar: "https://i.imgur.com/LpaY82x.png",
       }
     }
@@ -40,7 +40,7 @@ const appointments = [
       student: "John Jones",
       interviewer: {
         id: 1,
-        name:  "John Jones",
+        name:  "Mildred Nazir",
         avatar: "https://i.imgur.com/LpaY82x.png",
       }
     }

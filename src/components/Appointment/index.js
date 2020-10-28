@@ -9,7 +9,6 @@ import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
 
 export default function Appointment(props) {
-  
   return (
     <>
       <Header time={props.time} />
