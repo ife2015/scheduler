@@ -14,10 +14,24 @@ export default function Appointment(props) {
   const SHOW = "SHOW";
   const CREATE = "CREATE"
 
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    console.log(interview);
+    props.bookInterview(props.id, interview);
+    transition(SHOW);
+  }
+
+  // pass save in Form component
+  // FORM captures name and interviewer  
+
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
+  console.log(props)
   return (
     <>
       <Header time={props.time} />
@@ -25,11 +39,11 @@ export default function Appointment(props) {
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
         <Show
-          student={props.interview.student}
-          interviewer={props.interview.interviewer}
+          student={props.getinterview.student}
+          interviewer={props.getinterview.interviewer}
         />
       )}
-      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} />}
+      {mode === CREATE && <Form onSave={save} interviewers={props.interviewers} onCancel={() => back()} />}
     </>
   );
 }

@@ -21,11 +21,11 @@ const getAppointmentsForDay = function(state, day) {
 };
 
 const getInterview = function(state, interview) {
-  
   if(interview) {
     const interviewerID = interview.interviewer; 
     const interviewerCat = state.interviewers;
-    const interviewDetails = interviewerCat[interviewerID.toString()]; 
+    const interviewDetails = interviewerCat[interviewerID]; 
+    console.log(interviewDetails);
     return {"student": interview.student, "interviewer": interviewDetails}
   } else {
     return null;
