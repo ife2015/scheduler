@@ -4,21 +4,6 @@ const useVisualMode = function(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial])
 
-
-  // replace current mode in history 
-  // with 
-  // replace 
-  /* 
-mode = first 
-history = [first]
-mode = second 
-history = [first, second]
-mode = third 
-[first, second, third]
-------
-splice(0,1)
-  
-  */ 
   function transition(newMode, replace) {
     if(replace) {
       history.pop();
