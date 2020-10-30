@@ -41,16 +41,18 @@ const getInterviewersForDay = function(state, day) {
   });
   
   if(filteredDay.length === 0) {
-    return filteredDay;
+    return [];
   } else {
-    filteredDay[0].appointments.forEach(appointmentsItem => {
-      for(let id in state.appointments) {
-        if(appointmentsItem === Number(id)) {
-          emptyArray.push(state.appointments[id]);
+    filteredDay[0].interviewers.forEach(interviewNum => {
+      for (let id in state.interviewers) {
+        if (interviewNum === Number(id)) {
+          emptyArray.push(state.interviewers[id]);
         }
       }
-    });
+    }
+    );
   }
+  console.log(emptyArray)
   return emptyArray;
 };
 
