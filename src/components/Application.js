@@ -5,7 +5,6 @@ import Appointment from "components/Appointment/index"
 import DayList from "components/DayList";
 import axios from 'axios';
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors.js";
-import { NULL } from "node-sass";
 
 export default function Application(props) {
 
@@ -46,25 +45,12 @@ export default function Application(props) {
     axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
     .then(() => {
       setState({...state, appointments});
-    });
+    })
   }
 
+
   function cancelInterview(id) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-    setState({...state, appointments});
-
-    axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
-    .then(() => {
-      setState({...state, appointments});
-    });
-
+    axios.delete(`http://localhost:8001/api/appointments/${id}`);
   }
 
   const appointmentBooking = dailyAppointments.map(appointment => {

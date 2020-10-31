@@ -9,9 +9,6 @@ const useVisualMode = function(initial) {
       history.pop();
       setMode(newMode);
       setHistory([...history, newMode]);
-      // history[history.length - 1] = newMode;
-      // setMode(history[history.length-1])
-      //console.log(history);
     } else {
       setMode(newMode)
       setHistory([...history, newMode])
