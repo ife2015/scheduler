@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import DayListItem from "components/DayListItem"
 
 function useApplicationData () {
   
@@ -36,6 +37,19 @@ function useApplicationData () {
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
         setState({ ...state, appointments });
+        console.log(appointment.id);
+        /*
+          if(appointment.id){
+          <DayListItem 
+          key = {item.id}
+          name={item.name} 
+          spots={item.spots - 1} 
+          selected={item.name === props.day}
+          setDay={props.setDay}  
+        />
+          }
+        
+        */
       })
   }
 

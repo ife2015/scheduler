@@ -28,11 +28,6 @@ export default function Appointment(props) {
 
     transition(SAVING);
 
-    // setTimeout(function() {
-    //   props.bookInterview(props.id, interview);
-    //   transition(SHOW);
-    // }, 1000);
-    
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
@@ -42,12 +37,6 @@ export default function Appointment(props) {
  
   function destroy(event) {
     transition(DELETING, true);
-
-    // setTimeout(function () {
-    //   props.cancelInterview(props.id);
-    //   transition(EMPTY);
-    // }, 1000);
-
 
     props
       .cancelInterview(props.id)
@@ -65,7 +54,7 @@ export default function Appointment(props) {
       <Header time={props.time} />
       <article className="appointment"></article>
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === CONFIRM && <Confirm message="Are you sure you would like to delete appointment?" onConfirm={destroy}/> }
+      {mode === CONFIRM && <Confirm message="Are you sure you would like to delete appointment?" onCancel={() => back()} onConfirm={destroy}/> }
       {mode === SHOW && 
       (
         <Show
