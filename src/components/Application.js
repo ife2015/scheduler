@@ -42,7 +42,7 @@ export default function Application(props) {
     };
     setState({...state, appointments});
 
-    axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
+   return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
     .then(() => {
       setState({...state, appointments});
     })
@@ -50,7 +50,7 @@ export default function Application(props) {
 
 
   function cancelInterview(id) {
-    axios.delete(`http://localhost:8001/api/appointments/${id}`);
+    return axios.delete(`http://localhost:8001/api/appointments/${id}`);
   }
 
   const appointmentBooking = dailyAppointments.map(appointment => {

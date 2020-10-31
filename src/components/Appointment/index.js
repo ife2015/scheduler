@@ -28,35 +28,31 @@ export default function Appointment(props) {
 
     transition(SAVING);
 
-    setTimeout(function() {
-      props.bookInterview(props.id, interview);
-      transition(SHOW);
-    }, 1000);
+    // setTimeout(function() {
+    //   props.bookInterview(props.id, interview);
+    //   transition(SHOW);
+    // }, 1000);
     
-
-    // props
-    //   .bookInterview(props.id, interview)
-    //   // .then(() => transition(SHOW))
-    //   // .catch(error => transition(ERROR_SAVE, true));
+    props
+      .bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(() => transition(ERROR_SAVE));
   }
 
-  function confirmDelete() {
-    transition(CONFIRM);
-  }
-
+ 
   function destroy(event) {
     transition(DELETING, true);
 
-    setTimeout(function () {
-      props.cancelInterview(props.id);
-      transition(EMPTY);
-    }, 1000);
+    // setTimeout(function () {
+    //   props.cancelInterview(props.id);
+    //   transition(EMPTY);
+    // }, 1000);
 
 
-    // props
-    //   .cancelInterview(props.id)
-    //   .then(() => transition(EMPTY))
-    //   .catch(error => transition(ERROR_DELETE, true));
+    props
+      .cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch(error => transition(ERROR_DELETE, true));
   }
 
 
