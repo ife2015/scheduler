@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import DayListItem from "components/DayListItem"
 
-function useApplicationData () {
-  
+function useApplicationData() {
+
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}, 
+    appointments: {},
     interviewers: {}
   });
 
@@ -19,10 +18,28 @@ function useApplicationData () {
       axios.get('http://localhost:8001/api/appointments'),
       axios.get('http://localhost:8001/api/interviewers')
     ]).then(all => {
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
+      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     })
   }, []);
-  
+
+  const updateSpot = function (day, days, keyword) {
+    if (keyword === "less") {
+      for (let dayDetail of days) {
+        if (dayDetail.name === day) {
+          dayDetail.spots -= 1;
+        }
+      }
+    }
+
+    if (keyword === "more") {
+      for (let dayDetail of days) {
+        if (dayDetail.name === day) {
+          dayDetail.spots += 1;
+        }
+      }
+    }
+  }
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -37,28 +54,22 @@ function useApplicationData () {
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
         setState({ ...state, appointments });
-        console.log(appointment.id);
-        /*
-          if(appointment.id){
-          <DayListItem 
-          key = {item.id}
-          name={item.name} 
-          spots={item.spots - 1} 
-          selected={item.name === props.day}
-          setDay={props.setDay}  
-        />
-          }
-        
-        */
+        updateSpot(state.day, state.days, "less");
+        setState({ ...state, appointments });
       })
   }
 
   function cancelInterview(id) {
-    return axios.delete(`http://localhost:8001/api/appointments/${id}`);
+    return axios.delete(`http://localhost:8001/api/appointments/${id}`)
+      .then(() => {
+        console.log(state)
+        updateSpot(state.day, state.days, "more");
+        setState({ ...state })
+      });
   }
 
-  return {state, setDay, bookInterview, cancelInterview };
+  return { state, setDay, bookInterview, cancelInterview };
 }
 
 
-export {useApplicationData}
+export { useApplicationData }
