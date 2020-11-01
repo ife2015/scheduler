@@ -1,9 +1,15 @@
 import React from "react";
+
+// imported styling
 import "components/Appointment/styles.scss";
+
+// imported functions  
+import {useVisualMode} from "hooks/useVisualMode";
+
+// imported components
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
-import {useVisualMode} from "hooks/useVisualMode";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
@@ -20,7 +26,10 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE"; 
 
+  
   function save(name, interviewer) {
+    const check_isEdit = (mode === EDIT);
+
     const interview = {
       student: name,
       interviewer
@@ -29,7 +38,7 @@ export default function Appointment(props) {
     transition(SAVING);
 
     props
-      .bookInterview(props.id, interview)
+      .bookInterview(props.id, interview, check_isEdit)
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE));
   }
@@ -41,7 +50,7 @@ export default function Appointment(props) {
     props
       .cancelInterview(props.id)
       .then(() => transition(EMPTY))
-      .catch(error => transition(ERROR_DELETE, true));
+      .catch(()=> transition(ERROR_DELETE, true));
   }
 
 

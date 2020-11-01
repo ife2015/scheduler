@@ -1,7 +1,9 @@
 import React from "react";
+
+//imported components
 import Button from "components/Button";
 
-
+// renders the confirmation dialog box
 export default function Confirm(props) {
   return (
     <main className="appointment__card appointment__card--confirm">

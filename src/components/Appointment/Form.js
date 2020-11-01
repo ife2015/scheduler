@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 
+// imported components
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
-
 export default function Form(props) {
 
-  const[name, setName] = useState(props.name || "");
-  const[interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [name, setName] = useState(props.name || "");
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
+  // resets inputs
   function reset() {
     setName("");
     setInterviewer(null);
   }
 
+  // discards interview input form
   function cancel() {
     reset();
     props.onCancel();
   }
 
-  function save () {
+  // saves name and interviewer input in form
+  function save() {
     props.onSave(name, interviewer);
   }
 
@@ -34,9 +37,6 @@ export default function Form(props) {
             type="text"
             onChange={(event) => setName(event.target.value)}
             placeholder="Enter Student Name"
-          /*
-            This must be a controlled component
-          */
           />
         </form>
         <InterviewerList interviewers={props.interviewers} value={interviewer} onChange={setInterviewer} />

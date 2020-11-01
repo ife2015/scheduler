@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
 function useApplicationData() {
@@ -40,7 +40,7 @@ function useApplicationData() {
     }
   }
 
-  function bookInterview(id, interview) {
+  function bookInterview(id, interview, isEdit) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -53,10 +53,14 @@ function useApplicationData() {
 
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
-        setState({ ...state, appointments });
-        updateSpot(state.day, state.days, "less");
-        setState({ ...state, appointments });
-      })
+        if (isEdit) {
+          setState({ ...state, appointments });
+        } else {
+          setState({ ...state, appointments });
+          updateSpot(state.day, state.days, "less");
+          setState({ ...state, appointments });
+        }
+      });
   }
 
   function cancelInterview(id) {

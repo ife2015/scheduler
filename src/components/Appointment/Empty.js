@@ -1,5 +1,6 @@
 import React from "react";
 
+// renders empty interview slot
 export default function Empty(props) {
   return (
     <main className="appointment__add">
@@ -7,7 +8,7 @@ export default function Empty(props) {
         className="appointment__add-button"
         src="images/add.png"
         alt="Add"
-        onClick = {props.onAdd}
+        onClick={props.onAdd}
       />
     </main>
   );

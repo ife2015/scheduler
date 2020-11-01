@@ -1,5 +1,6 @@
 import React from "react";
 
+// renders scheduler heading
 export default function Header(props) {
   return (
     <header className="appointment__time">
