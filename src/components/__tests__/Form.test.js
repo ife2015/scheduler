@@ -31,18 +31,20 @@ describe("Form", () => {
 
   it("validates that the student name is not blank", () => {
     /* 1. Create the mock onSave function */
-      const onSave = jest.fn();
+    const onSave = jest.fn();
 
-     /* 2. Render the Form with interviewers and the onSave mock function passed as an onSave prop, the name prop should be blank or undefined */
+    /* 2. Render the Form with interviewers and the onSave mock function passed as an onSave prop, the name prop should be blank or undefined */
     const { getByText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
     );
+
     /* 3. Click the save button */
     fireEvent.click(getByText("Save"));
-
-    /* 1. validation is shown */
+  
+    /* 4. validation is shown */
     expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
-    /* 2. onSave is not called */
+
+    /* 5. onSave is not called */
     expect(onSave).not.toHaveBeenCalled();
   });
   
@@ -121,6 +123,7 @@ describe("Form", () => {
         onCancel={onCancel}
       />
     );
+    
   
     fireEvent.click(getByText("Save"));
   
