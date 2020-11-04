@@ -118,5 +118,12 @@ export default {
         statusText: "No Content"
       });
     }
+
+    if(fixtures.appointments["3"].id &&url === `http://localhost:8001/api/appointments/${fixtures.appointments["3"].id}`) {
+      return Promise.resolve({
+        status: 204,
+        statusText: "No Content"
+      });
+    }
   })
 };
