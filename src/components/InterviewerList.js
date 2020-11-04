@@ -9,7 +9,7 @@ import "components/InterviewerList.scss";
 import InterviewerListItem from "components/InterviewerListItem";
 
 function InterviewerList(props) {
-  console.log(props.interviewers);
+
   const interviewPeople = props.interviewers.map(interviewerDetails => {
 
     return (

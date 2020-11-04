@@ -66,7 +66,6 @@ function useApplicationData() {
   function cancelInterview(id) {
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
-        console.log(state)
         updateSpot(state.day, state.days, "more");
         setState({ ...state })
       });
