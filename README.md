@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-Using the latest tools and techniques, I built and tested a React application that allows students to create, book, edit, and deletee interview appointments with a mentor between noon and 5pm. I combined a concise API with a WebSocket server to build a realtime experience. 
+Using the latest tools and techniques, I built and tested a React application that allows students to create, book, edit, and delete interview appointments with a mentor between noon and 5pm. I combined a concise API with a WebSocket server to build a realtime experience. 
 
 - Build components in isolation.
 - Retrieve data from an API and render it using components.
