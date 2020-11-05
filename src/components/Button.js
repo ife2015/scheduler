@@ -1,9 +1,12 @@
 import React from "react";
 
+// imported CSS styling 
 import "components/Button.scss";
 
+// imported class function
 import classNames from 'classnames/bind';
 
+// button component "cancel" and "confirm"
 export default function Button(props) {
 
    const buttonClass = classNames("button", {

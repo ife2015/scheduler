@@ -26,7 +26,7 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE"; 
 
-  
+  // saves both the student name and interviewer selected
   function save(name, interviewer) {
     const check_isEdit = (mode === EDIT);
 
@@ -43,7 +43,7 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_SAVE));
   }
 
- 
+ // deletes an appointment interview slot
   function destroy(event) {
     transition(DELETING, true);
 
@@ -52,7 +52,6 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch(()=> transition(ERROR_DELETE, true));
   }
-
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY

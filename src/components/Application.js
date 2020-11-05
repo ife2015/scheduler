@@ -1,10 +1,13 @@
 import React from "react";
 
+// imported CSS styling
 import "components/Application.scss";
 
+// imported components 
 import Appointment from "components/Appointment/index"
 import DayList from "components/DayList";
 
+// imported functions 
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors.js";
 import { useApplicationData } from "hooks/useApplicationData"
 
@@ -20,6 +23,7 @@ export default function Application(props) {
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewersBooking = getInterviewersForDay(state, state.day);
 
+  // maps the appointment properties for each slot
   const appointmentBooking = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
     return (

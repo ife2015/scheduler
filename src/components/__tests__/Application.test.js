@@ -126,12 +126,11 @@ describe("Application", () => {
     
     const appointments = getAllByTestId(container, "appointment");
     const appointment = appointments[1];
-    //console.log(appointment)
+
     fireEvent.click(getByAltText(appointment, "Delete"));
     fireEvent.click(getByText(appointment, "Confirm"));
     await waitForElement(() => getByText(appointment, "Could not delete appointment."));
     
-    //console.log(prettyDOM(appointment))
     expect(getByText(appointment, "Could not delete appointment.")).toBeInTheDocument();
   });
 });

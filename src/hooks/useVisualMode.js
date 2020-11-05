@@ -16,8 +16,7 @@ const useVisualMode = function(initial) {
       setHistory([...history, newMode])
     }
   };
-
-  //["SHOW", "CONFIRM", "DELETING", "ERROR_DELETE"]
+  
   function back() {
     if (history.length === 1) {
       console.log(history);

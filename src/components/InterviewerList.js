@@ -10,6 +10,7 @@ import InterviewerListItem from "components/InterviewerListItem";
 
 function InterviewerList(props) {
 
+  // list of interviewers and properties
   const interviewPeople = props.interviewers.map(interviewerDetails => {
 
     return (

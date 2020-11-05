@@ -1,4 +1,4 @@
-
+// return array of appointments in an array with booking information
 const getAppointmentsForDay = function(state, day) {
 
   let emptyArray = [];
@@ -20,6 +20,7 @@ const getAppointmentsForDay = function(state, day) {
   return emptyArray;
 };
 
+// returns student and interviewer details
 const getInterview = function(state, interview) {
   if (interview) {
     const interviewerID = interview.interviewer;
@@ -31,6 +32,7 @@ const getInterview = function(state, interview) {
   }
 };
 
+// returns interviewier details for the selected interviewer
 const getInterviewersForDay = function(state, day) {
 
   const emptyArray = [];

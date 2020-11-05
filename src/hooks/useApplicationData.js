@@ -22,6 +22,7 @@ function useApplicationData() {
     })
   }, []);
 
+  // updates the spots on the nav in real-time
   const updateSpot = function (day, days, keyword) {
     if (keyword === "less") {
       for (let dayDetail of days) {
@@ -40,6 +41,7 @@ function useApplicationData() {
     }
   }
 
+  // put/save intereview details
   function bookInterview(id, interview, isEdit) {
     const appointment = {
       ...state.appointments[id],
@@ -63,6 +65,7 @@ function useApplicationData() {
       });
   }
 
+  // permanently deletes interview details 
   function cancelInterview(id) {
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
