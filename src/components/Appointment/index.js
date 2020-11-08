@@ -3,7 +3,7 @@ import React from "react";
 // imported styling
 import "components/Appointment/styles.scss";
 
-// imported functions  
+// imported functions
 import {useVisualMode} from "hooks/useVisualMode";
 
 // imported components
@@ -24,7 +24,7 @@ export default function Appointment(props) {
   const DELETING = "DELETING";
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
-  const ERROR_DELETE = "ERROR_DELETE"; 
+  const ERROR_DELETE = "ERROR_DELETE";
 
   // saves both the student name and interviewer selected
   function save(name, interviewer) {
@@ -43,8 +43,8 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_SAVE));
   }
 
- // deletes an appointment interview slot
-  function destroy(event) {
+  // deletes an appointment interview slot
+  function destroy() {
     transition(DELETING, true);
 
     props
@@ -78,9 +78,9 @@ export default function Appointment(props) {
         {mode === CREATE && <Form onSave={save} interviewers={props.interviewers} onCancel={() => back()} />}
         {mode === ERROR_SAVE && <Error message="Could not save appointment." onClose={() => back()} />}
         {mode === ERROR_DELETE && <Error message="Could not delete appointment." onClose={() => back()} />}
-        {mode === EDIT && <Form name={props.interview.student} 
-        interviewer={props.interview.interviewer} 
-        interviewers={props.interviewers} onSave={save} onCancel={() => back()} />}
+        {mode === EDIT && <Form name={props.interview.student}
+          interviewer={props.interview.interviewer}
+          interviewers={props.interviewers} onSave={save} onCancel={() => back()} />}
       </article>
     </>
   );

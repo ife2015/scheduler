@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import { render, getByAltText, queryByText, getByPlaceholderText, getByText, cleanup, waitForElement, fireEvent, prettyDOM, getAllByTestId } from "@testing-library/react";
+import { render, getByAltText, queryByText, getByPlaceholderText, getByText, cleanup, waitForElement, fireEvent, getAllByTestId } from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -17,7 +17,7 @@ describe("Application", () => {
     });
   });
 
-  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
+  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async() => {
     const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
     
@@ -47,7 +47,7 @@ describe("Application", () => {
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 
-  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
+  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async() => {
     const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
@@ -55,7 +55,7 @@ describe("Application", () => {
     const appointment = appointments[1];
     
     fireEvent.click(getByAltText(appointment, "Delete"));
-    expect(getByText(container,/Are you sure you would like to delete appointment/i )).toBeInTheDocument();
+    expect(getByText(container,/Are you sure you would like to delete appointment/i)).toBeInTheDocument();
 
     fireEvent.click(getByText(appointment, "Confirm"));
     expect(getByText(appointment, "Deleting")).toBeInTheDocument();
@@ -70,7 +70,7 @@ describe("Application", () => {
     expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
   });
 
-  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
+  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async() => {
     const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
@@ -83,7 +83,7 @@ describe("Application", () => {
       target: { value: "Lydia Miller-Jones" }
     });
     
-    fireEvent.click(getByText(appointment, "Save"));  
+    fireEvent.click(getByText(appointment, "Save"));
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
@@ -96,9 +96,9 @@ describe("Application", () => {
     expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
   });
 
-  it("shows the save error when failing to save an appointment", async () => {
+  it("shows the save error when failing to save an appointment", async() => {
     axios.put.mockRejectedValueOnce();
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     const appointments = getAllByTestId(container, "appointment");
@@ -114,14 +114,14 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
 
     await waitForElement(() => getByText(appointment, "Could not save appointment."));
-    expect(getByText(appointment, "Could not save appointment.")).toBeInTheDocument()
+    expect(getByText(appointment, "Could not save appointment.")).toBeInTheDocument();
   
   });
 
-  it("shows the delete error when failing to delete an existing appointment", async () => {
+  it("shows the delete error when failing to delete an existing appointment", async() => {
     axios.delete.mockRejectedValueOnce();
 
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
     
     const appointments = getAllByTestId(container, "appointment");
@@ -134,4 +134,3 @@ describe("Application", () => {
     expect(getByText(appointment, "Could not delete appointment.")).toBeInTheDocument();
   });
 });
-

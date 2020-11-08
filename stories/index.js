@@ -9,7 +9,7 @@ import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
-import Appointment from "components/Appointment/index.js"
+import Appointment from "components/Appointment/index.js";
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
@@ -38,7 +38,7 @@ storiesOf("Button", module)
 storiesOf("DayListItem", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-  }) 
+  })
   .add("Unselected", () => <DayListItem name="Monday" spots={5} />)
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />)
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
@@ -88,7 +88,7 @@ storiesOf("InterviewerListItem", module)
       id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={event => action("setInterviewer")(interviewer.id)}
+      setInterviewer={() => action("setInterviewer")(interviewer.id)}
     />
   ));
 
@@ -148,4 +148,3 @@ storiesOf("Appointment", module)
       <Appointment id="last" time="1pm" />
     </Fragment>
   ));
-

@@ -6,10 +6,10 @@ import classNames from 'classnames/bind';
 
 export default function InterviewerListItem(props) {
 
-  const interviewList = classNames("interviewers__item", 
-  {
-    "interviewers__item--selected": props.selected
-  }
+  const interviewList = classNames("interviewers__item",
+    {
+      "interviewers__item--selected": props.selected
+    }
   );
 
   return (

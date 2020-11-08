@@ -1,6 +1,6 @@
 import React from "react";
 
-// imported components 
+// imported components
 import "components/DayListItem.scss";
 
 // imported classNames function
@@ -17,13 +17,13 @@ export default function DayListItem(props) {
     } else {
       return `${spots} spots remaining`;
     }
-  }
+  };
 
-  const dayClass = classNames("day-list__item", 
-  {
-    "day-list__item--selected": props.selected,
-    "day-list__item--full": (!props.spots)
-  }
+  const dayClass = classNames("day-list__item",
+    {
+      "day-list__item--selected": props.selected,
+      "day-list__item--full": (!props.spots)
+    }
   );
 
 
@@ -34,5 +34,3 @@ export default function DayListItem(props) {
     </li>
   );
 }
-
-

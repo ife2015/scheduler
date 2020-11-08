@@ -22,7 +22,7 @@ function InterviewerList(props) {
         setInterviewer={event => props.onChange(interviewerDetails.id)}
       />
     );
-  })
+  });
 
   return (
     <section className="interviewers">

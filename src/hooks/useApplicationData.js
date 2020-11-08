@@ -19,11 +19,11 @@ function useApplicationData() {
       axios.get('http://localhost:8001/api/interviewers')
     ]).then(all => {
       setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
-    })
+    });
   }, []);
 
   // updates the spots on the nav in real-time
-  const updateSpot = function (day, days, keyword) {
+  const updateSpot = function(day, days, keyword) {
     if (keyword === "less") {
       for (let dayDetail of days) {
         if (dayDetail.name === day) {
@@ -39,7 +39,7 @@ function useApplicationData() {
         }
       }
     }
-  }
+  };
 
   // put/save intereview details
   function bookInterview(id, interview, isEdit) {
@@ -65,12 +65,12 @@ function useApplicationData() {
       });
   }
 
-  // permanently deletes interview details 
+  // permanently deletes interview details
   function cancelInterview(id) {
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
         updateSpot(state.day, state.days, "more");
-        setState({ ...state })
+        setState({ ...state });
       });
   }
 
@@ -78,4 +78,4 @@ function useApplicationData() {
 }
 
 
-export { useApplicationData }
+export { useApplicationData };

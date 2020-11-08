@@ -1,6 +1,6 @@
 import React from "react";
 
-// renders dialog box with (save/delete) error message 
+// renders dialog box with (save/delete) error message
 export default function Error(props) {
   return (
     <main className="appointment__card appointment__card--error">
@@ -17,4 +17,3 @@ export default function Error(props) {
     </main>
   );
 }
-

@@ -83,21 +83,21 @@ export default {
     }
   }),
   put: jest.fn(url => {
-    if(fixtures.appointments["1"].id && url === `http://localhost:8001/api/appointments/${fixtures.appointments["1"].id}`) {
+    if (fixtures.appointments["1"].id && url === `http://localhost:8001/api/appointments/${fixtures.appointments["1"].id}`) {
       return Promise.resolve({
         status: 204,
         statusText: "No Content"
       });
     }
 
-    if(fixtures.appointments["2"].id && url === `http://localhost:8001/api/appointments/${fixtures.appointments["2"].id}`) {
+    if (fixtures.appointments["2"].id && url === `http://localhost:8001/api/appointments/${fixtures.appointments["2"].id}`) {
       return Promise.resolve({
         status: 204,
         statusText: "No Content"
       });
     }
 
-    if(fixtures.appointments["3"].id && url === `http://localhost:8001/api/appointments/${fixtures.appointments["3"].id}`) {
+    if (fixtures.appointments["3"].id && url === `http://localhost:8001/api/appointments/${fixtures.appointments["3"].id}`) {
       return Promise.resolve({
         status: 204,
         statusText: "No Content"
@@ -105,21 +105,21 @@ export default {
     }
   }),
   delete: jest.fn(url => {
-    if(fixtures.appointments["1"].id  && url === `http://localhost:8001/api/appointments/${fixtures.appointments["1"].id}`) {
+    if (fixtures.appointments["1"].id  && url === `http://localhost:8001/api/appointments/${fixtures.appointments["1"].id}`) {
       return Promise.resolve({
         status: 204,
         statusText: "No Content"
       });
     }
 
-    if(fixtures.appointments["2"].id &&url === `http://localhost:8001/api/appointments/${fixtures.appointments["2"].id}`) {
+    if (fixtures.appointments["2"].id && url === `http://localhost:8001/api/appointments/${fixtures.appointments["2"].id}`) {
       return Promise.resolve({
         status: 204,
         statusText: "No Content"
       });
     }
 
-    if(fixtures.appointments["3"].id &&url === `http://localhost:8001/api/appointments/${fixtures.appointments["3"].id}`) {
+    if (fixtures.appointments["3"].id && url === `http://localhost:8001/api/appointments/${fixtures.appointments["3"].id}`) {
       return Promise.resolve({
         status: 204,
         statusText: "No Content"

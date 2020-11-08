@@ -30,4 +30,3 @@ export default function Show(props) {
     </main>
   );
 }
-

@@ -26,7 +26,7 @@ const getInterview = function(state, interview) {
     const interviewerID = interview.interviewer;
     const interviewerCat = state.interviewers;
     const interviewDetails = interviewerCat[interviewerID];
-    return { "student": interview.student, "interviewer": interviewDetails }
+    return { "student": interview.student, "interviewer": interviewDetails };
   } else {
     return null;
   }

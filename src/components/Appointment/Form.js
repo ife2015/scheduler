@@ -11,7 +11,6 @@ export default function Form(props) {
   const [error, setError] = useState("");
 
   // resets inputs
-  
   function reset() {
     setName("");
     setInterviewer(null);
@@ -37,7 +36,7 @@ export default function Form(props) {
     }
     
     setError("");
-     // saves name and interviewer input in form
+    // saves name and interviewer input in form
     props.onSave(name, interviewer);
   }
 
@@ -54,9 +53,9 @@ export default function Form(props) {
             placeholder="Enter Student Name"
             data-testid="student-name-input"
           />
-           <section className="appointment__validation">
-             {error}
-           </section>
+          <section className="appointment__validation">
+            {error}
+          </section>
         </form>
         <InterviewerList interviewers={props.interviewers} value={interviewer} onChange={setInterviewer} />
       </section>
