@@ -15,16 +15,12 @@ const useVisualMode = function(initial) {
   }
   
   function back() {
-    if (history.length === 1) {
+    history.pop();
+    setHistory(history);
+    if (history.includes("DELETING")) {
       setMode(history[0]);
     } else {
-      history.pop();
-      setHistory(history);
-      if (history.includes("DELETING")) {
-        setMode(history[0]);
-      } else {
-        setMode(history[history.length - 1]);
-      }
+      setMode(history[history.length - 1]);
     }
   }
   return { mode, transition, back };

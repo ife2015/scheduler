@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
+// imported functions
+import { updateSpot } from "helpers/selectors.js";
+
 function useApplicationData() {
 
   const [state, setState] = useState({
@@ -22,27 +25,8 @@ function useApplicationData() {
     });
   }, []);
 
-  // updates the spots on the nav in real-time
-  const updateSpot = function(day, days, keyword) {
-    if (keyword === "less") {
-      for (let dayDetail of days) {
-        if (dayDetail.name === day) {
-          dayDetail.spots -= 1;
-        }
-      }
-    }
-
-    if (keyword === "more") {
-      for (let dayDetail of days) {
-        if (dayDetail.name === day) {
-          dayDetail.spots += 1;
-        }
-      }
-    }
-  };
-
   // put/save intereview details
-  function bookInterview(id, interview, isEdit) {
+  function bookInterview(id, interview, isCreate) {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -51,14 +35,10 @@ function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-    setState({ ...state, appointments });
 
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
-        if (isEdit) {
-          setState({ ...state, appointments });
-        } else {
-          setState({ ...state, appointments });
+        if(isCreate) {
           updateSpot(state.day, state.days, "less");
           setState({ ...state, appointments });
         }

@@ -55,4 +55,21 @@ const getInterviewersForDay = function(state, day) {
   return emptyArray;
 };
 
-export { getAppointmentsForDay, getInterview, getInterviewersForDay }
+  // updates the spots on the nav in real-time
+const updateSpot = function(day, days, keyword) {
+  if (keyword === "less") {
+    for (let dayDetail of days) {
+      if (dayDetail.name === day) {
+        dayDetail.spots -= 1;
+      }
+    }
+  } else {
+    for (let dayDetail of days) {
+      if (dayDetail.name === day) {
+        dayDetail.spots += 1;
+      }
+    }
+  }
+};
+
+export { getAppointmentsForDay, getInterview, getInterviewersForDay, updateSpot }
