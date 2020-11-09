@@ -15,12 +15,9 @@ const useVisualMode = function(initial) {
   }
   
   function back() {
-    history.pop();
-    setHistory(history);
-    if (history.includes("DELETING")) {
-      setMode(history[0]);
-    } else {
-      setMode(history[history.length - 1]);
+    if (history.length > 1) {
+      history.pop();
+      setMode(history[history.length-1]);
     }
   }
   return { mode, transition, back };
