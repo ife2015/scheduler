@@ -36,6 +36,8 @@ function useApplicationData() {
       [id]: appointment
     };
 
+    setState({ ...state, appointments });
+
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment)
       .then(() => {
         if(isCreate) {
